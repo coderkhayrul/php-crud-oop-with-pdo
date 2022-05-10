@@ -2,17 +2,21 @@
 require './model/database.php';
 
 class Student{
+    
+    // DataBase Link
     private $con;
     function __construct() {
         $this->con = new Database();
     }
 
+    // Get All Student
     function index(){
         $sql = "SELECT * FROM student";
         $students = $this->con->pdo->query($sql);
         return $students;
     }
 
+    // Create Student
     function create($request){
         $student_name = $request['student_name'];
         $student_email = $request['student_email'];
@@ -29,14 +33,17 @@ class Student{
         }
     }
 
+    // Edit Student
     function edit(){
         
     }
 
+    // Update Student
     function update(){
         
     }
 
+    // Destory Student
     function destroy(){
         
     }
