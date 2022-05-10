@@ -1,7 +1,11 @@
 <?php 
     require './controller/StudentController.php';
-    $get_student = new Student();
-    $students = $get_student->index();
+    if (isset($_POST['student_save'])) {
+        $student = new Student();
+        $data = $student->create($_REQUEST);
+    }else{
+
+    }
 ?>
 <!doctype html>
 <html lang="en">
@@ -27,28 +31,29 @@
                 <a href="index.php" class="btn btn-primary">All Student</a>
             </div>
             <div class="card-body">
+                <?php echo $data; ?>
                 <form action="" method="post">
                     <div class="row form-group mb-2 justify-content-center">
                         <div class="col-md-6">
-                            <label for="">Student Name</label>
+                            <label for="student_name">Student Name</label>
                             <input type="text" name="student_name" class="form-control" placeholder="Student Name">
                         </div>
                     </div>
                     <div class="row form-group mb-2 justify-content-center">
                         <div class="col-md-6">
-                            <label for="">Student Email</label>
-                            <input type="text" name="student_email" class="form-control" placeholder="Student Email">
+                            <label for="student_email">Student Email</label>
+                            <input type="email" name="student_email" class="form-control" placeholder="Student Email">
                         </div>
                     </div>
                     <div class="row form-group mb-2 justify-content-center">
                         <div class="col-md-6">
-                            <label for="">Student Phone</label>
+                            <label for="student_phone">Student Phone</label>
                             <input type="text" name="student_phone" class="form-control" placeholder="Student Phone">
                         </div>
                     </div>
                     <div class="row form-group justify-content-center">
                         <div class="col-md-2 text-center">
-                            <button type="submit" class="btn btn-success">Add Student</button>
+                            <button name="student_save" type="submit" class="btn btn-success">Add Student</button>
                         </div>
                     </div>
                 </form>
