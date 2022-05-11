@@ -34,13 +34,29 @@ class Student{
     }
 
     // Edit Student
-    function edit(){
-        
+    function edit($id){
+        $sql = "SELECT * FROM student WHERE student_id = '$id'";
+        $result = $this->con->pdo->query($sql);
+        return $result;
     }
 
     // Update Student
-    function update(){
-        
+    function update($request){
+        $student_name = $request['student_name'];
+        $student_email = $request['student_email'];
+        $student_phone = $request['student_phone'];
+        $student_id = $request['student_id'];
+
+        $sql = "UPDATE student SET student_name=?, student_email=?, student_phone=? WHERE student_id=?";
+        $stmt= $this->con->pdo->prepare($sql);
+        $statement = $stmt->execute([$student_name,$student_email,$student_phone, $student_id]);
+        if ($statement == true) {
+            session_start();
+            $_SESSION['message'] =  "<div class='alert alert-success' role='alert'>Update Success!</div>";
+            return header("Location: index.php");
+        }else{
+            return "<div class='alert alert-danger' role='alert'>Update Failed!</div>";
+        }
     }
 
     // Destory Student

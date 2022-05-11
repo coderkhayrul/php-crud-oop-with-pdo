@@ -1,5 +1,6 @@
 <?php 
     require './controller/StudentController.php';
+    session_start();
     $get_student = new Student();
     $students = $get_student->index();
 ?>
@@ -27,6 +28,11 @@
                 <a href="create.php" class="btn btn-primary">Add Student</a>
             </div>
             <div class="card-body">
+                <?php 
+                if ($_SESSION['message']) {
+                    echo $_SESSION['message'];
+                    unset($_SESSION['message']);
+                } ?>
             <table class="table table-dark table-hover" border="2">
             <thead>
                 <tr>
@@ -47,7 +53,7 @@
                     <td><?php echo $data['student_email'] ?></td>
                     <td><?php echo $data['student_phone'] ?></td>
                     <td>
-                        <a href="" class="btn btn-primary btn-sm">Edit</a>
+                        <a name="student_edit" href="edit.php?id=<?php echo $data['student_id'] ?>" class="btn btn-primary btn-sm">Edit</a>
                         <a href="" class="btn btn-danger btn-sm">Delete</a>
                     </td>
                 </tr>

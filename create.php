@@ -4,7 +4,7 @@
         $student = new Student();
         $data = $student->create($_REQUEST);
     }else{
-
+        
     }
 ?>
 <!doctype html>
