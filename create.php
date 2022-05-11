@@ -31,6 +31,7 @@
                 <a href="index.php" class="btn btn-primary">All Student</a>
             </div>
             <div class="card-body">
+                <!-- Get Message -->
                 <?php echo $data; ?>
                 <form action="" method="post">
                     <div class="row form-group mb-2 justify-content-center">

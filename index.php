@@ -29,7 +29,7 @@
             </div>
             <div class="card-body">
                 <?php 
-                if ($_SESSION['message']) {
+                if (!empty($_SESSION['message'])) {
                     echo $_SESSION['message'];
                     unset($_SESSION['message']);
                 } ?>
@@ -53,8 +53,8 @@
                     <td><?php echo $data['student_email'] ?></td>
                     <td><?php echo $data['student_phone'] ?></td>
                     <td>
-                        <a name="student_edit" href="edit.php?id=<?php echo $data['student_id'] ?>" class="btn btn-primary btn-sm">Edit</a>
-                        <a href="" class="btn btn-danger btn-sm">Delete</a>
+                        <a href="edit.php?id=<?php echo $data['student_id'] ?>" class="btn btn-primary btn-sm">Edit</a>
+                        <a href="delete.php?id=<?php echo $data['student_id'] ?>" class="btn btn-danger btn-sm">Delete</a>
                     </td>
                 </tr>
                 <?php } ?>
@@ -63,8 +63,6 @@
             </div>
         </div>
     </div>
-
-
 
     <!-- SCRIPT LINK -->
     <!-- <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script> -->

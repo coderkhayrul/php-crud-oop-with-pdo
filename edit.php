@@ -1,14 +1,17 @@
 <?php 
     require './controller/StudentController.php';
+    
+    // Get Single Student By ID
     $student = new Student();
     $id = $_GET['id'];
     $student = $student->edit($id);
-
+    
+    // Student Data Update
     if (isset($_POST['student_update'])) {
         $student = new Student();
         $student->update($_REQUEST);
     }else {
-
+        
     }
 ?>
 <!doctype html>
